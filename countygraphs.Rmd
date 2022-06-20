@@ -1,0 +1,71 @@
+---
+title: "math42_final"
+author: "Aaron Tae UID 705591367"
+date: '2022-06-10'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)  
+library(readxl)
+```
+```{r}
+df <- read_excel("MCM_NFLIS_Data.xlsx", sheet="Data")
+
+
+df_oh <- subset(df, State =="OH")  
+ggplot(df_oh, aes(YYYY, TotalDrugReportsCounty)) +
+  geom_line(aes(color=COUNTY)) +
+  theme(legend.position = "none") +
+  labs(x="Year", y="Drug Reports", title="Total Drug Reports in Ohio Counties 2010 - 2017") +
+   scale_x_continuous(n.breaks = 7)
+ggsave("oh.png", width=8, height=5)
+```
+
+```{r}
+df_ky <- subset(df, State =="KY")  
+ggplot(df_ky, aes(YYYY, TotalDrugReportsCounty)) +
+  geom_line(aes(color=COUNTY)) +
+  theme(legend.position = "none") +
+  labs(x="Year", y="Drug Reports", title="Total Drug Reports in Kentucky Counties 2010 - 2017") +
+  scale_x_continuous(n.breaks = 7)
+ggsave("ky.png", width=8, height=5)
+```
+
+```{r}
+df_pa <- subset(df, State =="PA")  
+ggplot(df_pa, aes(YYYY, TotalDrugReportsCounty)) +
+  geom_line(aes(color=COUNTY)) +
+  theme(legend.position = "none") +
+  labs(x="Year", y="Drug Reports", title="Total Drug Reports in Pennsylvania Counties 2010 - 2017") +
+  scale_x_continuous(n.breaks = 7)
+ggsave("pa.png", width=8, height=5)
+```
+
+```{r}
+df_va <- subset(df, State =="VA")  
+ggplot(df_va, aes(YYYY, TotalDrugReportsCounty)) +
+  geom_line(aes(color=COUNTY)) +
+  theme(legend.position = "none") +
+  labs(x="Year", y="Drug Reports", title="Total Drug Reports in Virginia Counties 2010 - 2017") +
+  scale_x_continuous(n.breaks = 7)
+ggsave("va.png", width=8, height=5)
+```
+
+
+```{r}
+df_wv <- subset(df, State =="WV")  
+ggplot(df_wv, aes(YYYY, TotalDrugReportsCounty)) +
+  geom_line(aes(color=COUNTY)) +
+  theme(legend.position = "none") +
+  labs(x="Year", y="Drug Reports", title="Total Drug Reports in West Virginia Counties 2010 - 2017") +
+  scale_x_continuous(n.breaks = 7)
+ggsave("wv.png", width=8, height=5)
+```
+
+
+
